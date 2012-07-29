@@ -5,9 +5,9 @@ from os.path import exists, join as pjoin
 from StringIO import StringIO
 from shutil import rmtree
 
-from projects.exceptions import ProjectImportError
-from vcs_support.backends.github import GithubContributionBackend
-from vcs_support.base import BaseVCS, VCSVersion
+from readthedocs.projects.exceptions import ProjectImportError
+from readthedocs.vcs_support.backends.github import GithubContributionBackend
+from readthedocs.vcs_support.base import BaseVCS, VCSVersion
 
 log = logging.getLogger(__name__)
 
