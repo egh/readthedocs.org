@@ -1,3 +1,5 @@
+.. _installing-read-the-docs:
+
 Installation
 =============
 
@@ -30,6 +32,18 @@ Next, install the dependencies using ``pip`` (included with virtualenv_)::
     cd readthedocs.org
     pip install -r pip_requirements.txt
 
+.. note::
+
+    If you are having trouble on OS X Mavericks (or possibly other versions of
+    OS X) with building ``lxml``, you probably might need to use Homebrew_
+    to ``brew install libxml2``, and invoke the install with::
+
+        CFLAGS=-I/usr/local/opt/libxml2/include/libxml2 \
+        LDFLAGS=-L/usr/local/opt/libxml2/lib \
+        pip install -r pip_requirements.txt
+
+.. _Homebrew: http://brew.sh/
+
 This may take a while, so go grab a beverage. When it's done, build your
 database::
 
@@ -52,8 +66,9 @@ Visit http://127.0.0.1:8000/ in your browser to see how it looks; you can use
 the admin interface via http://127.0.0.1:8000/admin (logging in with the
 superuser account you just created).
 
-While the webserver is running, you can build documentation for a project with
-the ``update_repos`` command::
+While the webserver is running, you can build documentation for the latest version of
+a project called 'pip' with the ``update_repos`` command.  You can replace 'pip'
+with the name of any added project::
 
    ./manage.py update_repos pip
 
@@ -69,7 +84,7 @@ Additional python requirements necessary to use Solr::
 
 Fetch and unpack Solr::
 
-    curl -O http://apache.mirrors.tds.net/lucene/solr/3.5.0/apache-solr-3.5.0.tgz
+    curl -O http://archive.apache.org/dist/lucene/solr/3.5.0/apache-solr-3.5.0.tgz
     tar xvzf apache-solr-3.5.0.tgz && SOLR_PATH=`pwd`/apache-solr-3.5.0/example
 
 Generate the schema.xml file::
@@ -100,9 +115,9 @@ What's available
 ----------------
 
 After registering with the site (or creating yourself a superuser account),
-you will be able to log in and view the `dashboard <http://readthedocs.org/dashboard/>`_
+you will be able to log in and view the `dashboard <http://readthedocs.org/dashboard/>`_.
 
-From the dashboard you can either create new documentation, or import your existing
+From the dashboard you can import your existing
 docs provided that they are in a git or mercurial repo.
 
 

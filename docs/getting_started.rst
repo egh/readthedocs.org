@@ -7,6 +7,8 @@ section shows you how.
 If you are already using Sphinx_ for your docs, skip ahead to
 :ref:`import-docs`.
 
+There is `a screencast`_ that will help you get started if you prefer.
+
 
 Write Your Docs
 ---------------
@@ -57,10 +59,11 @@ repository, and the documentation will be built.
 
 If you want to keep your code updated as you commit, configure your code repository to hit our `Post Commit Hooks`_. Otherwise your project will get rebuilt nightly.
 
+.. _a screencast: https://www.youtube.com/watch?feature=player_embedded&v=oJsUvBQyHBs
 .. _Sphinx: http://sphinx.pocoo.org/
 .. _reStructuredText: http://sphinx.pocoo.org/rest.html
 .. _Sign up: http://readthedocs.org/accounts/register
 .. _log in: http://readthedocs.org/accounts/login
 .. _dashboard: http://readthedocs.org/dashboard
 .. _Import: http://readthedocs.org/dashboard/import
-.. _Post Commit Hooks: http://readthedocs.org/docs/read-the-docs/latest/webhooks.html 
+.. _Post Commit Hooks: http://readthedocs.org/docs/read-the-docs/en/latest/webhooks.html 

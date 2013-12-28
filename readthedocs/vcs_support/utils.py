@@ -1,9 +1,9 @@
 import logging
 import os
 import time
-import traceback
 
 log = logging.getLogger(__name__)
+
 
 class Lock(object):
     """
@@ -28,11 +28,12 @@ class Lock(object):
             time.sleep(self.polling_interval)
             timesince = time.time() - start
             if timesince > self.timeout:
-                log.info("Lock (%s): Force unlock, timeout reached" % self.name)
+                log.info("Lock (%s): Force unlock, timeout reached" %
+                         self.name)
                 os.remove(self.fpath)
                 break
-            log.info("%s still locked after %.2f seconds; retry for %.2f seconds" 
-                % (self.name, timesince, self.timeout))
+            log.info(("%s still locked after %.2f seconds; retry for %.2f"
+                      " seconds") % (self.name, timesince, self.timeout))
         open(self.fpath, 'w').close()
         log.info("Lock (%s): Lock aquired" % self.name)
 
@@ -41,4 +42,5 @@ class Lock(object):
             log.info("Lock (%s): Releasing" % self.name)
             os.remove(self.fpath)
         except:
-            log.error("Lock (%s): Failed to release, ignoring..." % self.name, exc_info=True)
+            log.error("Lock (%s): Failed to release, ignoring..." % self.name,
+                      exc_info=True)

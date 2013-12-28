@@ -3,11 +3,39 @@ Read the Docs features
 
 This will serve as a list of all of the features that Read the Docs currently has. Some features are important enough to have their own page in the docs, others will simply be listed here.
 
+Github Integration
+------------------
+
+We now support linking to GitHub by default in the sidebar. It links to the page on GitHub, and directly links to the edit view as well. This should help people quickly update typos and send pull requests to contribute to project documentation. Note that users must be logged in to GitHub in order to directly jump into the edit view via the "Edit on GitHub" link, otherwise they'll be presented with an unfortunate 404 page. The user does not, however, need to be logged on to use the "Show in GitHub" link. 
+
+If you want to integrate this into your own theme, the following variables are available in your custom templates:
+
+* github_user - GitHub username
+* github_repo - GitHub repo name
+* github_version - Github blob
+* conf_py_path - Path in the checkout to the docs root
+* pagename - Sphinx variable representing the name of the page you're on.
+* display_github
+
+It can be used like this::
+
+      {% if display_github %}
+        <li><a href="https://github.com/{{ github_user }}/{{ github_repo }}/blob/{{ github_version }}{{ conf_py_path }}{{ pagename }}.rst">
+          Show on GitHub</a></li>
+        <li><a href="https://github.com/{{ github_user }}/{{ github_repo }}/edit/{{ github_version }}{{ conf_py_path }}{{ pagename }}.rst">
+          Edit on GitHub</a></li>
+      {% endif %}
+
+Screenshot
+~~~~~~~~~~
+
+.. image:: /img/edit_on_github.png
+
 
 Auto-updating
 -------------
 
-The :doc:`webhooks` page talks about the different way you can ping RTD to let us know your project has been updated. We have official support for Github, and anywhere else we have a generic post-commit hook that allows you to POST to a URL to get your documentation built.
+The :doc:`webhooks` page talks about the different ways you can ping RTD to let us know your project has been updated. We have official support for Github, and anywhere else we have a generic post-commit hook that allows you to POST to a URL to get your documentation built.
 
 Heavily Cached
 --------------
@@ -19,7 +47,13 @@ We also bust caches on all documentation on the RTD domain (not CNAMEs, yet) whe
 Versions
 --------
 
-Versions are supported at the Version Control level. We support tags and branches that map to versions in RTD parlance. Not all version control systems are equally supported. We would love to accept patches from users of other VCS systems to gain equivalent features across systems.
+We can build multiple versions of your documentation. Look on the "Versions" page 
+of your project's admin (using the nav on the left) to find a list of available versions 
+that we've inferred from the tags and branches in your source control system (according to 
+the support matrix below). On the Versions page you can tell us which versions you'd like us 
+to build docs for, whether each should be public, protected, or private, and what the default 
+version should be (we'll redirect there when someone hits your main project page, e.g., 
+http://my-project.rtfd.org/).
 
 Version Control Support Matrix
 -------------------------------
@@ -27,11 +61,9 @@ Version Control Support Matrix
 +------------+------------+-----------+------------+-----------+
 |            |    Git     |    hg     |   bzr      |     svn   |
 +============+============+===========+============+===========+
-| Updating   |    Yes     |    Yes    |   Yes      |    Yes    |
-+------------+------------+-----------+------------+-----------+
 | Tags       |    Yes     |    Yes    |   No       |    No     |
 +------------+------------+-----------+------------+-----------+
-| Branches   |    Yes     |    No     |   Yes      |    No     |
+| Branches   |    Yes     |    Yes    |   Yes      |    No     |
 +------------+------------+-----------+------------+-----------+
 | Default    |    master  |   default |            |    trunk  |
 +------------+------------+-----------+------------+-----------+
@@ -40,7 +72,7 @@ Version Control Support Matrix
 PDF Generation
 --------------
 
-When you build your project on RTD, we automatically build a PDF of your projects documentation. We also build them for every version that you upload, so we can host the PDFs of your latest documentation, as well as your latest stable releases as well.
+When you build your project on RTD, we automatically build a PDF of your project's documentation. We also build them for every version that you upload, so we can host the PDFs of your latest documentation, as well as your latest stable releases as well.
 
 Search
 ------
@@ -50,7 +82,7 @@ We provide full-text search across all of the pages of documentation hosted on o
 Alternate Domains
 -----------------
 
-We provide support for CNAMEs, Subdomains, and a shorturl for your project as well. This is outlined in the :doc:`alternate_domains` section.
+We provide support for CNAMEs, subdomains, and a shorturl for your project as well. This is outlined in the :doc:`alternate_domains` section.
 
 Intersphinx Support
 -------------------
@@ -71,3 +103,5 @@ Then usage is pretty similar. You reference something using normal sphinx syntax
     :mod:`Intersphinx <sphinx:sphinx.ext.intersphinx>`
 
 This will create a link to the official Sphinx documentation for intersphinx.
+
+More information can be found on Reinout van Rees' blog: http://reinout.vanrees.org/weblog/2012/12/01/django-intersphinx.html

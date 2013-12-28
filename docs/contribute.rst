@@ -1,8 +1,16 @@
+.. _contributing-to-read-the-docs:
+
 Contributing to Read the Docs
 =============================
 
+Read the Docs follows the standard Contribution Guidelines set forth at `contribution-guide.org`_.
+Please read that site and follow the instructions to make sure your patches will be accepted.
 
-You should read the `Open Comparison Contributing Docs`_. They are some of the best I've seen, this document will some day copy their structure with example for Read the Docs, but until that day, I highly recommend reading theirs.
+.. _contribution-guide.org: http://docs.contribution-guide.org/en/latest/#submitting-bugs
 
+Translations
+------------
 
-.. _Open Comparison Contributing Docs: http://opencomparison.readthedocs.org/en/latest/contributing.html
+If you wish to contribute translations, please do so on `Transifex`_.
+
+.. _Transifex: https://www.transifex.com/projects/p/readthedocs/
